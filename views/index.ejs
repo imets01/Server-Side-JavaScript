@@ -1,0 +1,39 @@
+<%- include('header') -%>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Moziváros</h2>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>
+                        Mozi
+                    </th>
+                    <th>
+                        Cím
+                    </th>
+                    <th>
+                        &nbsp;
+                    </th>
+                </tr>
+                <% for (let i=0;i<mozi.length;i++){ const moz = mozi[i]; %> 
+                <tr>
+                    <td>
+                        <%= moz.nev %> 
+                    </td>
+                    <td>
+                        <%= moz.cim %> 
+                    </td>
+                    <td style="width:30px;white-space: nowrap">
+                        <a href="/mozi/<%= moz._id %>/filmlist" class="btn btn-sm btn-success">Megnyitás</a>
+                        <a href="/mozi/edit/<%= moz._id %>" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                        <a href="/mozi/del/<%= moz._id %>" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+          <br/>
+            <a href="/mozi/new" class="btn btn-primary float-right">Új Mozi hozzáadása</a>
+        </div>
+    </div>
+</div>
+<%- include('footer') -%>

@@ -1,0 +1,33 @@
+<%- include('header') -%>
+<%- include('menu') -%>
+
+<% if(typeof empty !== 'undefined') {%>
+    <div class="alert alert-danger" role="alert">Minden mezőt töltsön ki!</div>
+  <% }%>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <br>
+            <h2>Film módosítás / létrehozás</h2>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="nev">Film címe</label>
+                    <input type="text" class="form-control" id="cim" name="cim" value="<%= (typeof film === 'undefined') ? '' : film.cim %>">
+                </div>
+                <div class="form-group">
+                    <label for="nev">Műfaj(ok)</label>
+                    <input type="text" class="form-control" id="mufaj" name="mufaj" value="<%= (typeof film === 'undefined') ? '' : film.mufaj %>">
+                </div>
+                <div class="form-group">
+                    <label for="len">Hossz</label>
+                    <input type="text" class="form-control" id="hossz" name="hossz" value="<%= (typeof film === 'undefined') ? '' : film.hossz %>">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Tovább"/>
+                <a class="btn btn-link" href="/mozi/<%= mozi._id %>/filmlist">Mégsem</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('footer') -%>

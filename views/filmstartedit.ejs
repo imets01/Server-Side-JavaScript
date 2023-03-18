@@ -1,0 +1,51 @@
+<%- include('header') -%>
+<%- include('menu') -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <br>
+            <h2>Kezdés időpontok</h2>
+            <br>
+            <form method="POST">
+                <table class="table table-striped table-bordered">
+                <tr>
+                    <th>
+                        Dátum
+                    </th>
+                    <th>
+                        Kezdés
+                    </th>
+                    <th>
+                        3D
+                    </th>
+                    <th>
+                        &nbsp;
+                    </th>
+                </tr>
+            <% for (let i=0;i<film.adatok.length;i++){ const array = film.adatok[i]; %> 
+                <tr>
+                    <td class="align-middle">
+                        <%= array.datum %>
+                    </td>
+                    <td class="align-middle">
+                        <%= array.kezdes %>
+                    </td>
+                    <td class="align-middle">
+                        <%= array.haromde %>
+                    </td>
+                    <td class="align-middle"
+                        style="width:30px;white-space: nowrap">
+                        <a href="/mozi/<%= mozi._id %>/filmlist/del/<%= film._id %>/start/<%= array.kezdes %>" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            <% } %>
+            </table>
+                <a class="btn btn-primary" href="/mozi/<%= mozi._id %>/filmlist/new/<%= film._id %>/start" color="white">Befejezés</a>
+                <a class="btn btn-link" href="/mozi/<%= mozi._id %>/filmlist">Vissza a filmlistához</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('footer') -%>

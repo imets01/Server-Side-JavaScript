@@ -1,0 +1,80 @@
+<%- include('header') -%>
+<%- include('menu') -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <br>
+            <h2><%= mozi.nev %></h2>
+            <br>
+            <form method="POST">
+                <input type="date" class="form-control" id="filter" name="filter" style='width:10em'>
+                <input type="submit" class="btn btn-primary" value="Ok"/>
+            </form>
+            <br>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>
+                        Cím
+                    </th>
+                    <th>
+                        Dátum
+                    </th>
+                    <th>
+                        Kezdés
+                    </th>
+                    <th>
+                        3D
+                    </th>
+                    <th>
+                        Műfaj
+                    </th>
+                    <th>
+                        Hossz
+                    </th>
+                    <th>
+                        &nbsp;
+                    </th>
+                </tr>
+                <% for (let i=0;i<film.length;i++){ const flm = film[i]; %> 
+                    <tr>
+                        <td class="align-middle">
+                            <%= flm.cim %>
+                        </td>
+                        <td class="align-middle">
+                            <% for (let j=0;j<flm.adatok.length;j++){ const adt = flm.adatok[j]; %> 
+                                <%= adt.datum %><br>
+                            <% } %>
+                        </td>
+                        <td class="align-middle">
+                            <% for (let j=0;j<flm.adatok.length;j++){ const adt = flm.adatok[j]; %> 
+                                <%= adt.kezdes %><br>
+                            <% } %>
+                        </td>
+                        <td class="align-middle">
+                            <% for (let j=0;j<flm.adatok.length;j++){ const adt = flm.adatok[j]; %> 
+                                <%= adt.haromde %><br>
+                            <% } %>
+                        </td>
+                        <td class="align-middle">
+                            <%= flm.mufaj %>
+                        </td>
+                        <td class="align-middle">
+                            <%= flm.hossz %>
+                        </td>
+                        <td class="align-middle"
+                            style="width:30px;white-space: nowrap">
+                            <a href="/mozi/<%= mozi._id %>/filmlist/edit/<%= flm._id %>" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                            <a href="/mozi/<%= mozi._id %>/filmlist/del/<%= flm._id %>" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+            <br/>
+            <a href="/" class="btn float-left btn-primary">Vissza</a>
+            <a href="/mozi/<%= mozi._id %>/filmlist/new" class="btn float-right btn-primary">Új film hozzáadása</a>
+        </div>
+    </div>
+</div>
+
+<%- include('footer') -%>
